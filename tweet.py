@@ -17,7 +17,7 @@ def main():
     log("Starting bot...")
     config = get_config()
     api = get_api()
-    log("Logged in to @{}!".format(get_username()))
+    log("Logged in!")
     count = get_day_count()
     log("Current day count: {}".format(count))
 
@@ -27,7 +27,7 @@ def main():
     log("Waiting for the next trigger...")
     while True:
         schedule.run_pending()
-        sleep(10)
+        sleep(15)
 
 def get_config():
     if not os.path.exists(PATH):
@@ -84,13 +84,6 @@ def tweet():
 
 def log(msg):
     print("[" + datetime.now().strftime("%d/%m/%Y %H:%M:%S") + "] " + msg)
-
-def get_username():
-    global api
-    try:
-        return api.user_timeline(count=1)[0].user.screen_name
-    except:
-        return None
 
 if __name__ == "__main__":
     main()
