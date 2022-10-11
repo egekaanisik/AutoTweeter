@@ -68,7 +68,7 @@ def get_day_count():
     if match  == None:
         return 1
     else:
-        return int(match.group(1))
+        return int(match.group(1))+1
 
 def tweet():
     global config
